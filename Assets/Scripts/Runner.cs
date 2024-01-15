@@ -13,18 +13,19 @@ public class Runner : MonoBehaviour
 {
     [SerializeField] RoadLine roadLine;
 
-    [SerializeField] public float maxWidth = 3.5f;
+    [SerializeField] public float maxWidth = 2.25f;
 
-    [SerializeField] public float speed = 5f;
+    [SerializeField] public float lerpspeed = 25.0f;
 
     private void Start()
     {
+        InputManager.instance.keyAction += Move;
         roadLine = RoadLine.MIDDLE;
     }
 
     private void Update()
     {
-        Move();
+        Status();
     }
 
     private void Move()
@@ -66,6 +67,21 @@ public class Runner : MonoBehaviour
 
     private void Movement(float maxWidth)
     {
-        transform.position = new Vector3(maxWidth, 0, 0);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(maxWidth,0,0), lerpspeed * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        CollisionObject collisionObject = other.GetComponent<CollisionObject>();
+
+        if(collisionObject != null)
+        {
+            collisionObject.Activate(this);
+        }
+    }
+
+    private void OnDisable()
+    {
+        InputManager.instance.keyAction -= Move;
     }
 }
