@@ -4,8 +4,5 @@ using UnityEngine;
 
 public abstract class CollisionObject : MonoBehaviour
 {
-    public virtual void Activate(Runner runner)
-    {
-
-    }
+    public abstract void Activate(Runner runner);
 }

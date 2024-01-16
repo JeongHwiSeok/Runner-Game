@@ -8,6 +8,8 @@ public class RoadManager : MonoBehaviour
 
     [SerializeField] public float roadSpeed = 5f;
 
+    [SerializeField] public float offset = 24.3f;
+
     void Start()
     {
         roadList.Capacity = 10;
@@ -19,7 +21,7 @@ public class RoadManager : MonoBehaviour
         MoveRoad();
     }
 
-    private void MoveRoad()
+    public void MoveRoad()
     {
         for (int i = 0; i < roadList.Count; i++)
         {
@@ -30,14 +32,13 @@ public class RoadManager : MonoBehaviour
     public void LoadRoad()
     {
         GameObject newRoad = roadList[0];
-        roadList.Remove(roadList[0]);
-        float newZ = roadList[3].transform.position.z + 25f;
-        newRoad.transform.position = new Vector3(0, 0, newZ);
-        roadList.Add(newRoad);
+        
+        roadList.Remove(newRoad);
+        
+        float newZ = roadList[roadList.Count - 1].transform.position.z + offset;
 
-        for(int i = 1; i < roadList.Count; i++ )
-        {
-            roadList[i - 1] = roadList[i];
-        }
+        newRoad.transform.position = new Vector3(0, 0, newZ);
+        
+        roadList.Add(newRoad);
     }
 }
