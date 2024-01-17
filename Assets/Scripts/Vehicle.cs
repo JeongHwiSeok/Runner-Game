@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Vehicle : CollisionObject
 {
-    [SerializeField] float speed = 5.0f;
+    [SerializeField] float speed = 30f;
     [SerializeField] Vector3 direction;
 
     private void OnEnable()
