@@ -80,26 +80,23 @@ public class SpawnManager : MonoBehaviour
                 // 임의의 위치에 활성화 된 vehicle이 없다면 지정된 위치에 vehicle을 활성화
                 standbyvehicleLsit[random].transform.position = spawnPosition[positionNumber].transform.position;
                 
-                // 임의의 위치에 생성되었으므로 bool 배열에 생성했다고 표시
+                // 임의의 위치에 생성되었으므로 bool 배열에 생성했다고 표시4roTlr
                 spawnPositionCheck[positionNumber] = true;
             }
 
-            yield return new WaitForSeconds(1);
+            yield return CoroutineCache.waitForSeconds(5);
         }
     }
 
     private bool ListCheck()
     {
-        int i = 0;
-
-        while(standbyvehicleLsit[i].activeSelf)
+        for( int i = 0; i < standbyvehicleLsit.Count; i++)
         {
-            i++;
-            if(i >= standbyvehicleLsit.Count)
+            if (standbyvehicleLsit[i].activeSelf == false)
             {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 }
