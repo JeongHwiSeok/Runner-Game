@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public enum SceneID
 {
     TITLE,
-    Game,
+    GAME,
 }
 
 
@@ -55,24 +55,24 @@ public class AsyncSceneLoader : Singleton<AsyncSceneLoader>
             color.a += Time.deltaTime;
 
             fadeImage.color = color;
-        }
 
-        // float progress : 작업의 진행정도를 0 ~ 1 사이의 값으로 확인하는 기능
-        if(asyncOperation.progress >= 0.9f)
-        {
-            color.a = Mathf.Lerp(color.a, 1f, Time.deltaTime * time);
-
-            fadeImage.color = color;
-
-            if(color.a >= 1.0f)
+            // float progress : 작업의 진행정도를 0 ~ 1 사이의 값으로 확인하는 기능
+            if (asyncOperation.progress >= 0.9f)
             {
-                asyncOperation.allowSceneActivation = true;
+                color.a = Mathf.Lerp(color.a, 1f, Time.deltaTime * time);
 
-                yield break;
+                fadeImage.color = color;
+
+                if (color.a >= 1.0f)
+                {
+                    asyncOperation.allowSceneActivation = true;
+
+                    yield break;
+                }
             }
-        }
 
-        yield return null;
+            yield return null;
+        }
     }
 
 

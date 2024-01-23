@@ -84,7 +84,7 @@ public class SpawnManager : MonoBehaviour
                 spawnPositionCheck[positionNumber] = true;
             }
 
-            yield return CoroutineCache.waitForSeconds(5);
+            yield return CoroutineCache.waitForSeconds(3);
         }
     }
 
