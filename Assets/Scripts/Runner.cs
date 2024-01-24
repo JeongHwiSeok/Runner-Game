@@ -11,6 +11,8 @@ public enum RoadLine
 
 public class Runner : MonoBehaviour
 {
+    public Animator animator;
+
     [SerializeField] RoadLine roadLine;
 
     [SerializeField] public float maxWidth = 2.25f;
@@ -30,7 +32,12 @@ public class Runner : MonoBehaviour
 
     private void Move()
     {
-        if(Input.GetKeyDown(KeyCode.LeftArrow))
+        if (GameManager.instance.state == false)
+        {
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             if(roadLine > RoadLine.LEFT)
             {

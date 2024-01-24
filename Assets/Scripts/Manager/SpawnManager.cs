@@ -37,7 +37,7 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator ActiveVehicle()
     {
-        while(true)
+        while(GameManager.instance.state)
         {
             // Vehicle의 생성 수를 1~2를 랜덤으로 정함
             randomCount = Random.Range(1, 3);
@@ -84,7 +84,7 @@ public class SpawnManager : MonoBehaviour
                 spawnPositionCheck[positionNumber] = true;
             }
 
-            yield return CoroutineCache.waitForSeconds(3);
+            yield return CoroutineCache.waitForSeconds(5 - GameManager.instance.Speed/10 + 1);
         }
     }
 

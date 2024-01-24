@@ -16,17 +16,24 @@ public class Vehicle : CollisionObject
 
     private void OnEnable()
     {
-        speed = Random.Range(5, 41);
+        speed = GameManager.instance.Speed + Random.Range(20, 31);
         direction = Vector3.forward;
     }
 
     private void Update()
     {
+        if (GameManager.instance.state == false)
+        {
+            return;
+        }
+
         transform.Translate(direction * speed * Time.deltaTime);
     }
 
     public override void Activate(Runner runner)
     {
-        Debug.Log("Game Over");
+        runner.animator.Play("Die");
+
+        GameManager.instance.GameOver();
     }
 }
