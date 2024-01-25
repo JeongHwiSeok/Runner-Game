@@ -19,6 +19,9 @@ public class Runner : MonoBehaviour
 
     [SerializeField] public float lerpspeed = 25.0f;
 
+    [SerializeField] LeftCollider leftCollider;
+    [SerializeField] RightCollider rightCollider;
+
     private void Start()
     {
         InputManager.instance.keyAction += Move;
@@ -39,7 +42,12 @@ public class Runner : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            if(roadLine > RoadLine.LEFT)
+            if (leftCollider.TriggerCheck)
+            {
+                return;
+            }
+
+            if (roadLine > RoadLine.LEFT)
             {
                 roadLine--;
                 Status();
@@ -48,6 +56,11 @@ public class Runner : MonoBehaviour
         
         if(Input.GetKeyDown(KeyCode.RightArrow))
         {
+            if(rightCollider.TriggerCheck)
+            {
+                return;
+            }
+
             if(roadLine < RoadLine.RIGHT)
             {
                 roadLine++;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] private float speed = 20f;
+    [SerializeField] private float speed = 1f;
     [SerializeField] private float limitSpeed = 50f;
     [SerializeField] public bool state = true;
 

@@ -16,7 +16,7 @@ public class Vehicle : CollisionObject
 
     private void OnEnable()
     {
-        speed = GameManager.instance.Speed + Random.Range(20, 31);
+        speed = GameManager.instance.Speed + Random.Range(1, 11);
         direction = Vector3.forward;
     }
 
