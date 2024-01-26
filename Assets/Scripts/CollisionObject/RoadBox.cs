@@ -15,7 +15,10 @@ public class RoadBox : CollisionObject
 
     public override void Activate(Runner runner)
     {
-        runner.animator.speed = GameManager.instance.Speed / initSpeed;
+        runner.animator.speed = (GameManager.instance.Speed - 10) / initSpeed;
+
+        DataManager.instance.data.score += 10;
+        DataManager.instance.Save();
 
         callback.Invoke();
 

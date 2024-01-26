@@ -84,7 +84,7 @@ public class SpawnManager : MonoBehaviour
                 spawnPositionCheck[positionNumber] = true;
             }
 
-            yield return CoroutineCache.waitForSeconds(5 - GameManager.instance.Speed/10 + 1);
+            yield return CoroutineCache.waitForSeconds(LevelManager.spawnTime);
         }
     }
 

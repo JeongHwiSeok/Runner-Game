@@ -17,7 +17,7 @@ public class Runner : MonoBehaviour
 
     [SerializeField] public float maxWidth = 2.25f;
 
-    [SerializeField] public float lerpspeed = 25.0f;
+    [SerializeField] public float lerpspeed = 30f;
 
     [SerializeField] LeftCollider leftCollider;
     [SerializeField] RightCollider rightCollider;
