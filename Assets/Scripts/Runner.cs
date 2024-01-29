@@ -13,19 +13,17 @@ public class Runner : MonoBehaviour
 {
     public Animator animator;
 
-    [SerializeField] RoadLine roadLine;
+    [SerializeField] RoadLine currentRoadLine;
+    [SerializeField] RoadLine previousRoadLine;
 
     [SerializeField] public float maxWidth = 2.25f;
 
     [SerializeField] public float lerpspeed = 30f;
 
-    [SerializeField] LeftCollider leftCollider;
-    [SerializeField] RightCollider rightCollider;
-
     private void Start()
     {
         InputManager.instance.keyAction += Move;
-        roadLine = RoadLine.MIDDLE;
+        currentRoadLine = RoadLine.MIDDLE;
     }
 
     private void Update()
@@ -42,36 +40,28 @@ public class Runner : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            if (leftCollider.TriggerCheck)
+            if (currentRoadLine > RoadLine.LEFT)
             {
-                return;
-            }
-
-            if (roadLine > RoadLine.LEFT)
-            {
-                roadLine--;
+                previousRoadLine = currentRoadLine;
+                currentRoadLine--;
                 Status();
             }
         }
         
         if(Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if(rightCollider.TriggerCheck)
-            {
-                return;
-            }
-
-            if(roadLine < RoadLine.RIGHT)
-            {
-                roadLine++;
-                Status();
-            }
+           if(currentRoadLine < RoadLine.RIGHT)
+           {
+               previousRoadLine = currentRoadLine;
+               currentRoadLine++;
+               Status();
+           }
         }
     }
 
     private void Status()
     {
-        switch(roadLine)
+        switch(currentRoadLine)
         {
             case RoadLine.LEFT:
                 Movement(-maxWidth);
@@ -83,6 +73,12 @@ public class Runner : MonoBehaviour
                 Movement(maxWidth);
                 break;
         }
+    }
+
+    public void RevertPosition()
+    {
+        currentRoadLine = previousRoadLine;
+        Status();
     }
 
     private void Movement(float maxWidth)
