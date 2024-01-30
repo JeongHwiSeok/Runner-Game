@@ -1719,6 +1719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1450dc961286c0449a2e02b180b434fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 4243550423740034656}
 --- !u!4 &1528230801
 Transform:
   m_ObjectHideFlags: 0
@@ -1857,6 +1858,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92151780aae78f74bb741fbd13632fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data:
+    score: 0
 --- !u!4 &1635041188
 Transform:
   m_ObjectHideFlags: 0
@@ -2213,29 +2216,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &688334304088462338
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6079887270018141686}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.2
-  m_Height: 1.5
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!4 &711631395211484110
 Transform:
   m_ObjectHideFlags: 0
@@ -2660,33 +2640,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!54 &2499012560030663895
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6079887270018141686}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!1 &2539913791402892502
 GameObject:
   m_ObjectHideFlags: 0
@@ -3031,7 +2984,7 @@ Animator:
   m_GameObject: {fileID: 6079887270018141686}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f257161f3f8e6a9499bf92a29813cff1, type: 2}
+  m_Controller: {fileID: 9100000, guid: 43535e0a5267b4544aa93d2026da9ff4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3388,8 +3341,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6857796885691340620}
   - component: {fileID: 4243550423740034656}
-  - component: {fileID: 2499012560030663895}
-  - component: {fileID: 688334304088462338}
   m_Layer: 0
   m_Name: Runner
   m_TagString: Untagged

@@ -42,6 +42,7 @@ public class Runner : MonoBehaviour
         {
             if (currentRoadLine > RoadLine.LEFT)
             {
+                animator.Play("Left Avoid");
                 previousRoadLine = currentRoadLine;
                 currentRoadLine--;
                 Status();
@@ -50,12 +51,13 @@ public class Runner : MonoBehaviour
         
         if(Input.GetKeyDown(KeyCode.RightArrow))
         {
-           if(currentRoadLine < RoadLine.RIGHT)
-           {
-               previousRoadLine = currentRoadLine;
-               currentRoadLine++;
-               Status();
-           }
+            if(currentRoadLine < RoadLine.RIGHT)
+            {
+                animator.Play("Right Avoid");
+                previousRoadLine = currentRoadLine;
+                currentRoadLine++;
+                Status();
+            }
         }
     }
 
