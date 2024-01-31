@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PauseButton : MonoBehaviour
+{
+    private Transform parent;
+    private GameObject panel;
+
+    private void Start()
+    {
+        parent = GameObject.Find("UI Canvas").GetComponent<Transform>();
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0.0f;
+
+        if(panel == null)
+        {
+            panel = Instantiate(Resources.Load<GameObject>("Pause Panel"), parent);
+        }
+        else
+        {
+            panel.SetActive(true);
+        }
+    }
+}

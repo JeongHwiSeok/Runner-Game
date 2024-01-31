@@ -26,7 +26,7 @@ public class AsyncSceneLoader : Singleton<AsyncSceneLoader>
 
         while(color.a > 0f)
         {
-            color.a -= Time.deltaTime;
+            color.a -= Time.unscaledDeltaTime;
 
             fadeImage.color = color;
 
@@ -52,7 +52,7 @@ public class AsyncSceneLoader : Singleton<AsyncSceneLoader>
         // bool isDone : 해당 동작이 준비되었는지 판단하는 기능
         while(asyncOperation.isDone == false)
         {
-            color.a += Time.deltaTime;
+            color.a += Time.unscaledDeltaTime;
 
             fadeImage.color = color;
 

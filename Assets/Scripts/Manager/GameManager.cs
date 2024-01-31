@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -25,5 +26,20 @@ public class GameManager : Singleton<GameManager>
         {
             speed++;
         }
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += onSceneLoaded;
+    }
+
+    void onSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Time.timeScale = 1.0f;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= onSceneLoaded;
     }
 }

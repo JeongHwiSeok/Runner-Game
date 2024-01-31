@@ -1720,6 +1720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4243550423740034656}
+  startButton: {fileID: 25330379}
 --- !u!4 &1528230801
 Transform:
   m_ObjectHideFlags: 0
