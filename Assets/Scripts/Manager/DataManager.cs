@@ -6,19 +6,17 @@ using System.IO;
 [System.Serializable]
 public class Data
 {
-    public int score;
-
+    public int bestscore;
 }
 
 public class DataManager : Singleton<DataManager>
 {
     public Data data = new Data();
+    public int score;
 
     private void Start()
     {
         Load();
-
-        Debug.Log(data.score);
     }
 
     public void Save()
@@ -41,5 +39,15 @@ public class DataManager : Singleton<DataManager>
         string code = System.Text.Encoding.UTF8.GetString(bytes);
 
         data = JsonUtility.FromJson<Data>(code);
+    }
+
+    public void RenewalScore()
+    {
+        if(data.bestscore < score)
+        {
+            data.bestscore = score;
+
+            Save();
+        }
     }
 }
