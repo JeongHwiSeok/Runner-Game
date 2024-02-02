@@ -236,8 +236,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 30
   direction: {x: 0, y: 0, z: 0}
-  minRandomSpeed: 5
-  maxRandomSpeed: 20
 --- !u!1001 &1482177715109777041
 PrefabInstance:
   m_ObjectHideFlags: 0
